@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dice</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="main.css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+    <body onload="render()">
+
+        <script id="character_template" type="text/x-handlebars-template">
+            <p class="character_name">{{name}}</div>
+        </script>
+        <div id="character"></div>
+
+        <script id="actions_template" type="text/x-handlebars-template">
+            <table id="actions_table">
+                {{#each actions}}
+                    <tr>
+                        <td><p class="action_name">{{name}}</p></td>
+                        {{#each dice}}
+                        <td><button class="roll" onclick="rollAction('{{../name}}', '{{this}}')">{{this}}</button></td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </table>
+        </script>
+        <div id="actions"></div>
+
+        <script id="message_template" type="text/x-handlebars-template">
+            <div class="message">{{name}} ({{dice}}): {{roll}}</div>
+        </script>
+        <p id="messages"></p>
+
+    </body>
+</html>
